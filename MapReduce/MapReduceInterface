@@ -1,0 +1,17 @@
+Interface MapReduce<K, T, L> 
+
+//Word-Count: T = KeyValuePair<string, string>
+              K = KeyValuePair<string, int>
+              L = List<int>
+
+
+
+//List<K> map(T record)
+//Map("Game of Thrones", "Hallo Hallo Welt");
+List<K> Map(Func<T, List<K>> map, T record)
+{
+   return map(record);
+}
+
+// Reduce("Hallo", {1,1,1});
+string Reduce(string key, List<L>)
