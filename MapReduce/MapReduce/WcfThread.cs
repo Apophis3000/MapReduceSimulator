@@ -1,26 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+using MapReduce.ServiceReference1;
 
 namespace MapReduce
 {
     public class WcfThread
     {
+        public int ThreadIndex
+        {
+            get;
+            set;
+        }
+
         private Thread innerThread;
         private List<KeyValuePair<string, int>> mapResults;
         private string reduceResult;
+        private ChannelFactory<IWCMapReduce> remoteFactory;
+        private IWCMapReduce remoteProxy;
 
-        public WcfThread()
+        public WcfThread(int threadIndex)
         {
+            ThreadIndex = threadIndex;
+
             mapResults = new List<KeyValuePair<string, int>>();
+
+            StartUpService();
         }
 
         public void StartMap(string title, string content)
         {
-            innerThread = new Thread(InitMap);
+            innerThread = new Thread(() => InitMap(title, content));
 
             innerThread.Start();
         }
@@ -28,9 +44,9 @@ namespace MapReduce
         {
             return mapResults;
         }
-        public void StartReduce()
+        public void StartReduce(string word, List<int> counts)
         {
-            innerThread = new Thread(InitReduce);
+            innerThread = new Thread(() => InitReduce(word, counts));
 
             innerThread.Start();
         }
@@ -43,15 +59,34 @@ namespace MapReduce
             return !innerThread.IsAlive;
         }
 
-        private void InitMap()
+        private void StartUpService()
         {
-            //Wcf-Dienst
-            //Am Ende Thread stoppen
+            //Auslesen der Adressen zur Laufzeit
+            EndpointIdentity endId = EndpointIdentity.CreateSpnIdentity("mapReduce");
+
+            Uri uri = new Uri(ConfigurationManager.AppSettings["vm" + ThreadIndex]);
+
+            var address = new EndpointAddress(uri, endId);
+
+            //Einbinden der Dienste
+            remoteFactory = new ChannelFactory<IWCMapReduce>("WSHttpBinding_IWCMapReduce", address);
+            remoteProxy = remoteFactory.CreateChannel();
         }
-        private void InitReduce()
+        private void InitMap(string title, string content)
+        {
+            KeyValuePair<string, string> temp = new KeyValuePair<string, string>(title, content);
+
+            //Wcf-Dienst
+            mapResults = remoteProxy.Map(temp).ToList();
+
+            //Am Ende Thread stoppen?
+        }
+        private void InitReduce(string word, List<int> counts)
         {
             //Wcf-Dienst
-            //Am Ende Thread stoppen
+            remoteProxy.Reduce(word, counts.ToArray());
+
+            //Am Ende Thread stoppen?
         }
     }
 }

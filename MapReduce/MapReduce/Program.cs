@@ -40,36 +40,94 @@ namespace MapReduce
             List<KeyValuePair<string, int>> words1 = threadFac.GetThreadMapResults(1);
             List<KeyValuePair<string, int>> words2 = threadFac.GetThreadMapResults(2);
 
+            //Daten für Reduce-Vorgang
             Dictionary<string, List<int>> wordCounts = new Dictionary<string, List<int>>();
 
             foreach (KeyValuePair<string, int> word in words0)
             {
                 if (wordCounts.ContainsKey(word.Key))
                 {
-
+                    wordCounts[word.Key].Add(word.Value);
+                }
+                else
+                {
+                    wordCounts.Add(word.Key, new List<int> { word.Value } );
                 }
             }
             foreach (KeyValuePair<string, int> word in words0)
             {
-
+                if (wordCounts.ContainsKey(word.Key))
+                {
+                    wordCounts[word.Key].Add(word.Value);
+                }
+                else
+                {
+                    wordCounts.Add(word.Key, new List<int> { word.Value });
+                }
             }
             foreach (KeyValuePair<string, int> word in words0)
             {
-
+                if (wordCounts.ContainsKey(word.Key))
+                {
+                    wordCounts[word.Key].Add(word.Value);
+                }
+                else
+                {
+                    wordCounts.Add(word.Key, new List<int> { word.Value });
+                }
             }
 
             Console.WriteLine("Finished.");
             Console.WriteLine();
-            Console.WriteLine("");
+            Console.WriteLine("Reduce words...");
+
+            //Ausgabeergebnisse
+            List<string> output = new List<string>();
+
+            //Alle Wörter einzeln an den nächsten freien Thread übergeben
+            foreach (string word in wordCounts.Keys)
+            {
+                bool isInProgress = false;
+                
+                while (!isInProgress)
+                {
+                    if (!isInProgress && threadFac.ThreadFinished(0))
+                    {
+                        threadFac.StartThreadReduce(0, word, wordCounts[word]);
+                        isInProgress = true;
+                    }
+                    if (!isInProgress && threadFac.ThreadFinished(1))
+                    {
+                        threadFac.StartThreadReduce(1, word, wordCounts[word]);
+                        isInProgress = true;
+                    }
+                    if (!isInProgress && threadFac.ThreadFinished(2))
+                    {
+                        threadFac.StartThreadReduce(2, word, wordCounts[word]);
+                        isInProgress = true;
+                    }
+
+                    output.Add(threadFac.GetThreadReduceResult(0));
+                    output.Add(threadFac.GetThreadReduceResult(1));
+                    output.Add(threadFac.GetThreadReduceResult(2));
+                }
+            }
+
+            Console.WriteLine("Finished.");
+            Console.WriteLine();
+            Console.WriteLine("Output:");
+            Console.WriteLine();
+
+            foreach (string result in output)
+            {
+                Console.WriteLine(result);
+            }
+
+            Console.ReadLine();
         }
     }
 }
 /*
- * Multithreading einbauen
- *  - 3 Bücher, je eins in einen Thread auf Service aufrufen, warten bis alle fertig sind zum weiteren abarbeiten (MAP)
- *  - lokal zusammenfassen gleicher Worte (Werte addieren)
- *  - alle Wörter mit mehr als 1 in neuem Thread auf Service aufrufen, warten bis freie Ressource und nächsten Aufruf starten bis alle abgearbeitet (REDUCE)
- * Ausgabe auf Konsole
  * WCF-Dienst einbinden
  * 
  * Präsentation

@@ -32,11 +32,11 @@ namespace MapReduce
         {
             return AllThreads[threadIndex].GetMapResults();
         }
-        public void StartThreadReduce(int threadIndex)
+        public void StartThreadReduce(int threadIndex, string word, List<int> counts)
         {
-            AllThreads[threadIndex].StartReduce();
+            AllThreads[threadIndex].StartReduce(word, counts);
         }
-        public string GetReduceResult(int threadIndex)
+        public string GetThreadReduceResult(int threadIndex)
         {
             return AllThreads[threadIndex].GetReduceResult();
         }
