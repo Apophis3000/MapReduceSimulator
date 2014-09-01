@@ -120,11 +120,10 @@ namespace MapReduce
 
             Console.ReadLine();
         }
+
     }
 }
 /*
- * WCF-Dienst einbinden
- * 
  * Präsentation
  *  - Threading
  *  - Verbindung zum Server von Client aus

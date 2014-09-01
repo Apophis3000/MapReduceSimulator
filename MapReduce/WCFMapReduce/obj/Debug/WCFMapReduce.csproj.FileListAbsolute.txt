@@ -4,3 +4,15 @@ C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapRedu
 C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.csprojResolveAssemblyReference.cache
 C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.dll
 C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.pdb
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\WCFMapReduce\bin\Debug\WCFMapReduce.dll.config
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\WCFMapReduce\bin\Debug\WCFMapReduce.dll
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\WCFMapReduce\bin\Debug\WCFMapReduce.pdb
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.csprojResolveAssemblyReference.cache
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.dll
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.pdb
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\WCFMapReduce\bin\Debug\WCFMapReduce.dll.config
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\WCFMapReduce\bin\Debug\WCFMapReduce.dll
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\WCFMapReduce\bin\Debug\WCFMapReduce.pdb
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.csprojResolveAssemblyReference.cache
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.dll
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.pdb

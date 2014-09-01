@@ -56,7 +56,7 @@ namespace MapReduce
         }
         public bool Finished()
         {
-            return !innerThread.IsAlive;
+            return !(innerThread.ThreadState == ThreadState.Running);
         }
 
         private void StartUpService()
