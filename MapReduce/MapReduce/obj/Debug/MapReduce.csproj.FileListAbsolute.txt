@@ -1,0 +1,2 @@
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\bin\Debug\MapReduce.exe.config
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\obj\Debug\MapReduce.csprojResolveAssemblyReference.cache
