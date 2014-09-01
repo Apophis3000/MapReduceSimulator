@@ -21,7 +21,7 @@ namespace MapReduce
 
         private Thread innerThread;
         private List<KeyValuePair<string, int>> mapResults;
-        private string reduceResult;
+        private string reduceResult = string.Empty;
         private ChannelFactory<IWCMapReduce> remoteFactory;
         private IWCMapReduce remoteProxy;
 
@@ -52,7 +52,10 @@ namespace MapReduce
         }
         public string GetReduceResult()
         {
-            return reduceResult;
+            string result = reduceResult;
+            reduceResult = string.Empty;
+
+            return result;
         }
         public bool Finished()
         {
@@ -85,7 +88,10 @@ namespace MapReduce
         private void InitReduce(string word, List<int> counts)
         {
             //Wcf-Dienst
-            remoteProxy.Reduce(word, counts.ToArray());
+            reduceResult = remoteProxy.Reduce(word, counts.ToArray());
+
+            //Thread beenden
+            innerThread.Join();
         }
     }
 }

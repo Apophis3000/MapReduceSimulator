@@ -23,8 +23,8 @@ namespace MapReduce
             //Multithreading initialisieren
             ThreadFactory threadFac = new ThreadFactory(3);
             threadFac.StartThreadMap(0, books[0].Split('/')[0], books[0].Split('/')[1]);
-            threadFac.StartThreadMap(1, books[1].Split('/')[0], books[0].Split('/')[1]);
-            threadFac.StartThreadMap(2, books[2].Split('/')[0], books[0].Split('/')[1]);
+            threadFac.StartThreadMap(1, books[1].Split('/')[0], books[1].Split('/')[1]);
+            threadFac.StartThreadMap(2, books[2].Split('/')[0], books[2].Split('/')[1]);
 
             Console.WriteLine("Finished.");
             Console.WriteLine();
@@ -84,19 +84,6 @@ namespace MapReduce
                 }
             }
 
-            //Warteschleife bis alle Threads abgearbeitet sind
-            while (true)
-            {
-                bool fin0 = threadFac.ThreadFinished(0);
-                bool fin1 = threadFac.ThreadFinished(1);
-                bool fin2 = threadFac.ThreadFinished(2);
-
-                if (fin0 && fin1 && fin2)
-                {
-                    break;
-                }
-            }
-
             Console.WriteLine("Finished.");
             Console.WriteLine();
             Console.WriteLine("Reduce words...");
@@ -107,28 +94,81 @@ namespace MapReduce
             //Alle Wörter einzeln an den nächsten freien Thread übergeben
             foreach (string word in wordCounts.Keys)
             {
-                bool isInProgress = false;
+                bool wordIsInProgress = false;
 
-                while (!isInProgress && (!threadFac.ThreadFinished(0) || !threadFac.ThreadFinished(1) || !threadFac.ThreadFinished(2)))
+                while (true)
                 {
-                    if (!isInProgress && threadFac.ThreadFinished(0))
+                    if (!wordIsInProgress && threadFac.ThreadFinished(0))
                     {
+                        string result = threadFac.GetThreadReduceResult(0);
+
+                        if (!String.IsNullOrEmpty(result))
+                        {
+                            output.Add(result);
+                        }
+
                         threadFac.StartThreadReduce(0, word, wordCounts[word]);
-                        output.Add(threadFac.GetThreadReduceResult(0));
-                        isInProgress = true;
+                        wordIsInProgress = true;
                     }
-                    if (!isInProgress && threadFac.ThreadFinished(1))
+                    if (!wordIsInProgress && threadFac.ThreadFinished(1))
                     {
+                        string result = threadFac.GetThreadReduceResult(1);
+
+                        if (!String.IsNullOrEmpty(result))
+                        {
+                            output.Add(result);
+                        }
+
                         threadFac.StartThreadReduce(1, word, wordCounts[word]);
-                        output.Add(threadFac.GetThreadReduceResult(1));
-                        isInProgress = true;
+                        wordIsInProgress = true;
                     }
-                    if (!isInProgress && threadFac.ThreadFinished(2))
+                    if (!wordIsInProgress && threadFac.ThreadFinished(2))
                     {
+                        string result = threadFac.GetThreadReduceResult(2);
+
+                        if (!String.IsNullOrEmpty(result))
+                        {
+                            output.Add(result);
+                        }
+
                         threadFac.StartThreadReduce(2, word, wordCounts[word]);
-                        output.Add(threadFac.GetThreadReduceResult(2));
-                        isInProgress = true;
+                        wordIsInProgress = true;
                     }
+
+                    if (wordIsInProgress)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            //Warteschleife bis alle Threads abgearbeitet sind
+            while (true)
+            {
+                bool fin0 = threadFac.ThreadFinished(0);
+                bool fin1 = threadFac.ThreadFinished(1);
+                bool fin2 = threadFac.ThreadFinished(2);
+
+                if (fin0 && fin1 && fin2)
+                {
+                    string result0 = threadFac.GetThreadReduceResult(0);
+                    string result1 = threadFac.GetThreadReduceResult(1);
+                    string result2 = threadFac.GetThreadReduceResult(2);
+
+                    if (!String.IsNullOrEmpty(result0))
+                    {
+                        output.Add(result0);
+                    }
+                    if (!String.IsNullOrEmpty(result1))
+                    {
+                        output.Add(result1);
+                    }
+                    if (!String.IsNullOrEmpty(result2))
+                    {
+                        output.Add(result2);
+                    }
+
+                    break;
                 }
             }
 
@@ -144,7 +184,6 @@ namespace MapReduce
 
             Console.ReadLine();
         }
-
     }
 }
 /*
