@@ -1,2 +1,6 @@
 C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\bin\Debug\MapReduce.exe.config
 C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\obj\Debug\MapReduce.csprojResolveAssemblyReference.cache
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\bin\Debug\MapReduce.exe
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\bin\Debug\MapReduce.pdb
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\obj\Debug\MapReduce.exe
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\obj\Debug\MapReduce.pdb

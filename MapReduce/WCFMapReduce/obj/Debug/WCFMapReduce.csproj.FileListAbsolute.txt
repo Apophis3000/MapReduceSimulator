@@ -1,0 +1,6 @@
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\WCFMapReduce\bin\Debug\WCFMapReduce.dll.config
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\WCFMapReduce\bin\Debug\WCFMapReduce.dll
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\WCFMapReduce\bin\Debug\WCFMapReduce.pdb
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.csprojResolveAssemblyReference.cache
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.dll
+C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\WCFMapReduce\obj\Debug\WCFMapReduce.pdb
