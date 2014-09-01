@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapReduce", "MapReduce\MapReduce.csproj", "{F4DAA427-CB1A-493A-B2A5-045654D891F2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{09EB1BEE-A533-4296-B011-AFA1CBCF3D7D} = {09EB1BEE-A533-4296-B011-AFA1CBCF3D7D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFMapReduce", "WCFMapReduce\WCFMapReduce.csproj", "{09EB1BEE-A533-4296-B011-AFA1CBCF3D7D}"
 EndProject

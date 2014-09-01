@@ -20,7 +20,7 @@ namespace MapReduce
 
             for (int index = 0; index < countThreads; index++)
             {
-                AllThreads[index] = new WcfThread();
+                AllThreads[index] = new WcfThread(index);
             }
         }
 
