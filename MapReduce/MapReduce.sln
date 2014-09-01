@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapReduce", "MapReduce\MapReduce.csproj", "{F4DAA427-CB1A-493A-B2A5-045654D891F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFMapReduce", "WCFMapReduce\WCFMapReduce.csproj", "{09EB1BEE-A533-4296-B011-AFA1CBCF3D7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F4DAA427-CB1A-493A-B2A5-045654D891F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4DAA427-CB1A-493A-B2A5-045654D891F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4DAA427-CB1A-493A-B2A5-045654D891F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09EB1BEE-A533-4296-B011-AFA1CBCF3D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09EB1BEE-A533-4296-B011-AFA1CBCF3D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09EB1BEE-A533-4296-B011-AFA1CBCF3D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09EB1BEE-A533-4296-B011-AFA1CBCF3D7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
