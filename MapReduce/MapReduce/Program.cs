@@ -30,7 +30,18 @@ namespace MapReduce
             Console.WriteLine();
             Console.WriteLine("Mapping words...");
 
-            while (!threadFac.ThreadFinished(0) && !threadFac.ThreadFinished(1) && !threadFac.ThreadFinished(2));
+            //Warteschleife bis alle Threads abgearbeitet sind
+            while (true)
+            {
+                bool fin0 = threadFac.ThreadFinished(0);
+                bool fin1 = threadFac.ThreadFinished(1);
+                bool fin2 = threadFac.ThreadFinished(2);
+
+                if (fin0 && fin1 && fin2)
+                {
+                    break;
+                }
+            }
 
             List<KeyValuePair<string, int>> words0 = threadFac.GetThreadMapResults(0);
             List<KeyValuePair<string, int>> words1 = threadFac.GetThreadMapResults(1);
@@ -50,7 +61,7 @@ namespace MapReduce
                     wordCounts.Add(word.Key, new List<int> { word.Value } );
                 }
             }
-            foreach (KeyValuePair<string, int> word in words0)
+            foreach (KeyValuePair<string, int> word in words1)
             {
                 if (wordCounts.ContainsKey(word.Key))
                 {
@@ -61,7 +72,7 @@ namespace MapReduce
                     wordCounts.Add(word.Key, new List<int> { word.Value });
                 }
             }
-            foreach (KeyValuePair<string, int> word in words0)
+            foreach (KeyValuePair<string, int> word in words2)
             {
                 if (wordCounts.ContainsKey(word.Key))
                 {
@@ -70,6 +81,19 @@ namespace MapReduce
                 else
                 {
                     wordCounts.Add(word.Key, new List<int> { word.Value });
+                }
+            }
+
+            //Warteschleife bis alle Threads abgearbeitet sind
+            while (true)
+            {
+                bool fin0 = threadFac.ThreadFinished(0);
+                bool fin1 = threadFac.ThreadFinished(1);
+                bool fin2 = threadFac.ThreadFinished(2);
+
+                if (fin0 && fin1 && fin2)
+                {
+                    break;
                 }
             }
 

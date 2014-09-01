@@ -20,8 +20,8 @@ namespace MapReduce
         }
 
         private Thread innerThread;
-        private volatile List<KeyValuePair<string, int>> mapResults;
-        private volatile string reduceResult;
+        private List<KeyValuePair<string, int>> mapResults;
+        private string reduceResult;
         private ChannelFactory<IWCMapReduce> remoteFactory;
         private IWCMapReduce remoteProxy;
 
