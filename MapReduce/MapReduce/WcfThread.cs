@@ -20,8 +20,8 @@ namespace MapReduce
         }
 
         private Thread innerThread;
-        private List<KeyValuePair<string, int>> mapResults;
-        private string reduceResult;
+        private volatile List<KeyValuePair<string, int>> mapResults;
+        private volatile string reduceResult;
         private ChannelFactory<IWCMapReduce> remoteFactory;
         private IWCMapReduce remoteProxy;
 
@@ -79,14 +79,13 @@ namespace MapReduce
             //Wcf-Dienst
             mapResults = remoteProxy.Map(temp).ToList();
 
-            //Am Ende Thread stoppen?
+            //Thread beenden
+            innerThread.Join();
         }
         private void InitReduce(string word, List<int> counts)
         {
             //Wcf-Dienst
             remoteProxy.Reduce(word, counts.ToArray());
-
-            //Am Ende Thread stoppen?
         }
     }
 }

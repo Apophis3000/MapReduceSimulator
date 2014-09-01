@@ -30,11 +30,7 @@ namespace MapReduce
             Console.WriteLine();
             Console.WriteLine("Mapping words...");
 
-            while (!threadFac.ThreadFinished(0) && !threadFac.ThreadFinished(1) && !threadFac.ThreadFinished(2))
-            {
-                //Warteschleife
-                Thread.Sleep(1000);
-            }
+            while (!threadFac.ThreadFinished(0) && !threadFac.ThreadFinished(1) && !threadFac.ThreadFinished(2));
 
             List<KeyValuePair<string, int>> words0 = threadFac.GetThreadMapResults(0);
             List<KeyValuePair<string, int>> words1 = threadFac.GetThreadMapResults(1);
@@ -88,28 +84,27 @@ namespace MapReduce
             foreach (string word in wordCounts.Keys)
             {
                 bool isInProgress = false;
-                
-                while (!isInProgress)
+
+                while (!isInProgress && (!threadFac.ThreadFinished(0) || !threadFac.ThreadFinished(1) || !threadFac.ThreadFinished(2)))
                 {
                     if (!isInProgress && threadFac.ThreadFinished(0))
                     {
                         threadFac.StartThreadReduce(0, word, wordCounts[word]);
+                        output.Add(threadFac.GetThreadReduceResult(0));
                         isInProgress = true;
                     }
                     if (!isInProgress && threadFac.ThreadFinished(1))
                     {
                         threadFac.StartThreadReduce(1, word, wordCounts[word]);
+                        output.Add(threadFac.GetThreadReduceResult(1));
                         isInProgress = true;
                     }
                     if (!isInProgress && threadFac.ThreadFinished(2))
                     {
                         threadFac.StartThreadReduce(2, word, wordCounts[word]);
+                        output.Add(threadFac.GetThreadReduceResult(2));
                         isInProgress = true;
                     }
-
-                    output.Add(threadFac.GetThreadReduceResult(0));
-                    output.Add(threadFac.GetThreadReduceResult(1));
-                    output.Add(threadFac.GetThreadReduceResult(2));
                 }
             }
 
