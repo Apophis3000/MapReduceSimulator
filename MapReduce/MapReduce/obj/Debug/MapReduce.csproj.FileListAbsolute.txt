@@ -4,3 +4,15 @@ C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapRedu
 C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\bin\Debug\MapReduce.pdb
 C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\obj\Debug\MapReduce.exe
 C:\Users\Cedric\Documents\Visual Studio 2013\Projects\MapReduceSimulator\MapReduce\MapReduce\obj\Debug\MapReduce.pdb
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\MapReduce\bin\Debug\MapReduce.exe.config
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\MapReduce\obj\Debug\MapReduce.exe
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\MapReduce\obj\Debug\MapReduce.pdb
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\MapReduce\bin\Debug\MapReduce.exe
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\MapReduce\bin\Debug\MapReduce.pdb
+C:\Users\Fenrir\Desktop\MapReduceSimulator_new\MapReduce\MapReduce\obj\Debug\MapReduce.csprojResolveAssemblyReference.cache
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\MapReduce\bin\Debug\MapReduce.exe.config
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\MapReduce\obj\Debug\MapReduce.exe
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\MapReduce\obj\Debug\MapReduce.pdb
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\MapReduce\bin\Debug\MapReduce.exe
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\MapReduce\bin\Debug\MapReduce.pdb
+C:\Users\Fenrir\Desktop\MapReduceSimulator\MapReduce\MapReduce\obj\Debug\MapReduce.csprojResolveAssemblyReference.cache
